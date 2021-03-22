@@ -51,6 +51,8 @@ class GoogleLifeSciencesTaskHandler extends TaskHandler {
 
     public final static String DEFAULT_DISK_NAME = "nf-pipeline-work"
 
+    public final static String DEFAULT_DISK_TYPE = "pd-ssd"
+
     GoogleLifeSciencesExecutor executor
 
     private TaskBean taskBean
@@ -295,6 +297,7 @@ class GoogleLifeSciencesTaskHandler extends TaskHandler {
         req.zone = executor.config.zones
         req.region = executor.config.regions
         req.diskName = DEFAULT_DISK_NAME
+        req.diskType = DEFAULT_DISK_TYPE
         req.diskSizeGb = task.config.getDisk()?.getGiga() as Integer
         req.preemptible = executor.config.preemptible
         req.taskName = "nf-$task.hash"
